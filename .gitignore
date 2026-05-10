@@ -1,0 +1,32 @@
+# Зависимости (самая тяжелая папка, её никогда не коммитим)
+node_modules/
+jspm_packages/
+
+# Папки с результатами тестов и отчетами
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+mochawesome-report/
+cypress/screenshots/
+cypress/videos/
+allure-results/
+allure-report/
+
+# Логи
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Окружение и секреты (пароли, ключи доступа к стендам)
+.env
+.env.local
+.env.test
+
+# Системные файлы
+.DS_Store
+Thumbs.db
+
+# Настройки VS Code (опционально, если не хотите делиться своими темами/плагинами)
+.vscode/
