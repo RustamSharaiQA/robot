@@ -17,5 +17,11 @@
   "bugs": {
     "url": "https://github.com/RustamSharaiQA/robot/issues"
   },
-  "homepage": "https://github.com/RustamSharaiQA/robot#readme"
+  "homepage": "https://github.com/RustamSharaiQA/robot#readme",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.3.0",
+    "globals": "^17.6.0",
+    "prettier": "^3.8.3"
+  }
 }
