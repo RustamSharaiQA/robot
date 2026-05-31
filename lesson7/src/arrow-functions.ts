@@ -1,34 +1,28 @@
-const sum1 = (arr: number[]): number => {
-    let total = 0;
-    arr.forEach((num) => {
-        total += num;
-    });
-    console.log('Sum of all numbers in array: ' + total);
-    return total;
-};
-
-sum1([1, 4, 6, 7, 8, 2]);
-
-const mass1: number[] | string[] = [];
-const num1: number[] = [1, 2, 3];
-const stri1: string[] = ['test', 'test'];
-
-const multy1 = (data: number[] | string[]): void => {
-    if (data.length === 0) {
-        console.log('Warning: Array is empty!');
-        return;
+const processArray = (arr: number[] | string[]): number | string => {
+    if (arr.length === 0) {
+        return 0;
     }
-    if (typeof data[0] === 'number') {
-        for (const digit of data) console.log('Number: ' + digit);
+
+    if (typeof arr[0] === 'number') {
+        let totalNumber = 0;
+        (arr as number[]).forEach((num) => {
+            totalNumber += num;
+        });
+        return totalNumber;
     } else {
-        for (const str of data) {
-            console.log('String: ' + str);
-        }
+        let totalString = '';
+        (arr as string[]).forEach((str) => {
+            totalString += str;
+        });
+        return totalString;
     }
 };
-console.log('Array of Numers');
-multy1(num1);
-console.log('Array of Strings');
-multy1(stri1);
-console.log('Array if empty');
-multy1(mass1);
+
+const num1: number[] = [1, 2, 3];
+const stri1: string[] = ['test', 'is', 'good'];
+
+const sumResult = processArray(num1);
+console.log('Результат для чисел (сложение):', sumResult);
+
+const concatResult = processArray(stri1);
+console.log('Результат для строк (конкатенация):', concatResult);

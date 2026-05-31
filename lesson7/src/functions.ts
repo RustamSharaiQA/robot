@@ -1,34 +1,27 @@
-function sum(arr: number[]): number {
-    let total = 0;
-    arr.forEach((num) => {
-        total += num;
-    });
-    console.log('Sum of all numbers in array: ' + total);
-    return total;
-}
-
-sum([1, 4, 6, 7, 8, 2]);
-
-const mass: number[] | string[] = [];
-const num: number[] = [1, 2, 3];
-const stri: string[] = ['test', 'test'];
-
-function multy(data: number[] | string[]): void {
-    if (data.length === 0) {
-        console.log('Warning: Array is empty!');
-        return;
+function processArrayf(arr: number[] | string[]): number | string {
+    if (arr.length === 0) {
+        return 0;
     }
-    if (typeof data[0] === 'number') {
-        for (const digit of data) console.log('Number: ' + digit);
+    if (typeof arr[0] === 'number') {
+        let totalNumber = 0;
+        (arr as number[]).forEach((num) => {
+            totalNumber += num;
+        });
+        return totalNumber;
     } else {
-        for (const str of data) {
-            console.log('String: ' + str);
-        }
+        let totalString = '';
+        (arr as string[]).forEach((str) => {
+            totalString += str;
+        });
+        return totalString;
     }
 }
-console.log('Array of Numers');
-multy(num);
-console.log('Array of Strings');
-multy(stri);
-console.log('Array if empty');
-multy(mass);
+
+const num12: number[] = [1, 2, 3];
+const stri12: string[] = ['test', 'is', 'good'];
+
+const sumResult1 = processArrayf(num12);
+console.log('Результат для чисел (сложение):', sumResult1);
+
+const concatResult1 = processArrayf(stri12);
+console.log('Результат для строк (конкатенация):', concatResult1);
