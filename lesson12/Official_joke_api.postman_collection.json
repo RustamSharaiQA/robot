@@ -1,0 +1,376 @@
+{
+  "info": {
+    "_postman_id": "3a945d55-8a5e-4afd-b903-a38cc9fc13a6",
+    "name": "Official_joke_api",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "18190646"
+  },
+  "item": [
+    {
+      "name": "Chech_status_code",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Статус ответа должен быть 200 OK\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}jokes/random",
+          "host": [
+            "{{baseURL}}jokes"
+          ],
+          "path": [
+            "random"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Check_status_and_punchline_inputs",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ содержит поля setup и punchline\", function () {\r",
+              "    const jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData).to.have.property('setup');\r",
+              "    pm.expect(jsonData).to.have.property('punchline');\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}jokes/random",
+          "host": [
+            "{{baseURL}}jokes"
+          ],
+          "path": [
+            "random"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Check_id_input",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"ID шутки является числом\", function () {\r",
+              "    const jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.id).to.be.a('number');\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}jokes/random",
+          "host": [
+            "{{baseURL}}jokes"
+          ],
+          "path": [
+            "random"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Check_10_random_jokes",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Сервер вернул ровно 10 шуток\", function () {\r",
+              "    const jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData).to.be.an('array');\r",
+              "    pm.expect(jsonData.length).to.equal(10);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}jokes/ten",
+          "host": [
+            "{{baseURL}}jokes"
+          ],
+          "path": [
+            "ten"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Check_time_response",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Время ответа сервера меньше 300 мс\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(300);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}jokes/random/ten",
+          "host": [
+            "{{baseURL}}jokes"
+          ],
+          "path": [
+            "random",
+            "ten"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Check_quality",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Вернулось ровно 5 шуток\", function () {\r",
+              "    const jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.length).to.equal(5);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}jokes/random/5",
+          "host": [
+            "{{baseURL}}jokes"
+          ],
+          "path": [
+            "random",
+            "5"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Check_types",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Список типов содержит 'programming' и 'general'\", function () {\r",
+              "    const jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData).to.include('programming');\r",
+              "    pm.expect(jsonData).to.include('general');\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}types",
+          "host": [
+            "{{baseURL}}types"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Check_random_joke_programming",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Тип возвращенной шутки — programming\", function () {\r",
+              "    const jsonData = pm.response.json();\r",
+              "    const joke = Array.isArray(jsonData) ? jsonData[0] : jsonData;\r",
+              "    pm.expect(joke.type).to.equal(\"programming\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}jokes/programming/random",
+          "host": [
+            "{{baseURL}}jokes"
+          ],
+          "path": [
+            "programming",
+            "random"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Check_1_joke",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Возвращенная шутка имеет ID равный 1\", function () {\r",
+              "    const jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.id).to.equal(1);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}jokes/1",
+          "host": [
+            "{{baseURL}}jokes"
+          ],
+          "path": [
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Negative_test",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Сервер вернул статус 404 на несуществующий адрес\", function () {\r",
+              "    pm.response.to.have.status(404);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}jokes/broken-link-error",
+          "host": [
+            "{{baseURL}}jokes"
+          ],
+          "path": [
+            "broken-link-error"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseURL",
+      "value": ""
+    },
+    {
+      "key": "id",
+      "value": "",
+      "type": "default"
+    }
+  ]
+}
